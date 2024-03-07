@@ -21,15 +21,42 @@ public class Sketch extends PApplet {
     // Show Current Time
     int hr = hour();
     int min = minute();
+    int hr12;
+    int hrx;
+    
+    // Make time in 12-hr format and make sure it still aligns when single digit or double digit
+    if(hr > 12){
+      hr12 = hr - 12;
+      hrx = 20;
+      fill(0);
+      textSize(20);
+      text("pm", 70, 30);
+    }
+    else if(hr < 10){
+      hr12 = hr;
+      hrx = 20;
+      fill(0);
+      textSize(20);
+      text("am", 70, 30);
+
+    }
+    else{
+      hr12 = hr;
+      hrx = 10;
+      fill(0);
+      textSize(20);
+      text("am", 70, 30);
+    }    
 
     fill(0);
     textSize(20);
-    text(hr, 10, 30);
+    text(hr12, hrx, 30);
     text(":", 35, 30);
     text(min, 40, 30);
 
     float randomX = random(30, 400);
     float randomY = random(30, 400);
+    
     // If statements
     float fltrectcolour1, fltrectcolour2, fltrectcolour3;
     if (randomX > 200 && randomY > 200){
@@ -57,8 +84,6 @@ public class Sketch extends PApplet {
     fill(90, 90, 90);
     triangle(randomX * 0.25f, randomY * 0.5f, randomX * 0.75f, randomY * 0.5f, randomX * 0.5f, randomY * 0.375f);
 
-    
-    
   }
 
 }
